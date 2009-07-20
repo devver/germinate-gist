@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'germinate'
+require 'germinate/publisher'
 
 require File.expand_path(
     File.join(File.dirname(__FILE__), %w[.. lib germinate-gist]))
