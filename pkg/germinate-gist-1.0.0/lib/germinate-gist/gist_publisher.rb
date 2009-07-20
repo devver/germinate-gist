@@ -6,6 +6,7 @@ class GerminateGist::GistPublisher < Germinate::Publisher
   identifier "gist"
 
   GISTS_URL = 'http://gist.github.com/gists'
+  NEW_GIST_URL = 'http://gist.github.com/api/v1/xml/new'
 
   def initialize(name, librarian, options={})
     super
@@ -14,7 +15,7 @@ class GerminateGist::GistPublisher < Germinate::Publisher
   end
 
   def publish!(output, extra_options={})
-    gists = RestClient::Resource.new(GISTS_URL)
+    gists = RestClient::Resource.new(NEW_GIST_URL)
     response = gists.post(gist_data)
     log.debug "Gist Response:\n#{response}"
   end
