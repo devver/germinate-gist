@@ -25,9 +25,13 @@ task :default => 'spec:run'
 PROJ.name = 'germinate-gist'
 PROJ.authors = 'Avdi Grimm'
 PROJ.email = 'avdi@avdi.org'
-PROJ.url = 'FIXME (project homepage)'
+PROJ.url = 'http://germinate-gist.rubyforge.com'
 PROJ.version = GerminateGist::VERSION
 PROJ.rubyforge.name = 'germinate-gist'
+
+depend_on 'nokogiri',    '~> 1.2.3'
+depend_on 'schacon-git', '~> 1.1.1'
+depend_on 'rest_client', '~> 1.0.3'
 
 PROJ.spec.opts << '--color'
 

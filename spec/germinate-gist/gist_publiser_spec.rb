@@ -78,9 +78,15 @@ END
           @gists.should_receive(:post).
             with(
             {
-              'file_ext[my_article.c]'      => '.c',
-              'file_name[my_article.c]'     => 'my_article',
-              'file_contents[my_article.c]' => @contents,
+              'file_ext' => {
+                'my_article.c' => '.c'
+              },
+              'file_name' => {
+                'my_article.c' => 'my_article.c',
+              },
+              'file_contents' => {
+                'my_article.c' => "line 1\nline 2\n"
+              },
               'login'                       => 'johnq',
               'token'                       => 'abcde'
             })
@@ -108,19 +114,25 @@ END
       context "on publish" do
         it "should update the pre-exsting gist" do
           @resource_class.should_receive(:new).
-            with("http://gist.github.com/api/v1/xml/#{@gist_id}").
+            with("http://gist.github.com/gists/#{@gist_id}").
             and_return(@gist)
 
           @gist.should_receive(:put).with(
             {
-              'file_ext[my_article.c]'      => '.c',
-              'file_name[my_article.c]'     => 'my_article',
-              'file_contents[my_article.c]' => @contents,
+              'file_ext' => {
+                'my_article.c' => '.c'
+              },
+              'file_name' => {
+                'my_article.c' => 'my_article.c',
+              },
+              'file_contents' => {
+                'my_article.c' => "line 1\nline 2\n"
+              },
               'login'                       => 'johnq',
               'token'                       => 'abcde'
             })
-           @it.publish!(@output)
-       end
+          @it.publish!(@output)
+        end
       end
     end
 
