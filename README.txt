@@ -1,32 +1,51 @@
-germinate-gist
-    by Avdi Grimm
-    FIXME (url)
+= germinate-gist
 
-== DESCRIPTION:
+by Avdi Grimm
+
+http://github.com/devver/germinate-gist/
+
+== DESCRIPTION
 
 A Germinate plugin for publishing source code to the Gist service (http://gist.github.com)
 
-== FEATURES/PROBLEMS:
+See Germinate: http://github.com/devver/germinate/
 
-* FIXME (list of features or problems)
+== FEATURES
+
+* Uses your global github.user/github.token config variables
+* Updates the source file with the Gist ID
+* Publishing again will update the same Gist, won't start a new one
 
 == SYNOPSIS:
 
-  FIXME (code sample of usage)
+  $ cat my_article.rb
+  # :PUBLISHER: source, gist
+  # This is my awesome article
+  puts "Hello, world"
+
+  $ germ publish source my_article.rb
+  INFO -- germinate: Gist published at http://gist.github.com/12345
+
+  $ echo " # more text..." >> my_article.rb
+  $ germ publish source my_article.rb
+  INFO -- germinate: Gist http://gist.github.com/12345 updated
+
 
 == REQUIREMENTS:
 
-* FIXME (list of requirements)
+* Nokogiri
+* schacon-git
+* RestClient
 
 == INSTALL:
 
-* FIXME (sudo gem install, anything else)
+* sudo gem install devver-germinate-gist --source http://gems.github.com
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008 FIXME (different license?)
+Copyright (c) 2009
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

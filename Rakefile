@@ -16,6 +16,7 @@ rescue LoadError
 end
 
 ensure_in_path 'lib'
+
 require 'germinate'
 require 'germinate/publisher'
 require 'germinate-gist'
@@ -25,9 +26,14 @@ task :default => 'spec:run'
 PROJ.name = 'germinate-gist'
 PROJ.authors = 'Avdi Grimm'
 PROJ.email = 'avdi@avdi.org'
-PROJ.url = 'http://germinate-gist.rubyforge.com'
+PROJ.url = 'http://github.com/devver/germinate-gist/'
 PROJ.version = GerminateGist::VERSION
 PROJ.rubyforge.name = 'germinate-gist'
+PROJ.ignore_file = '.gitignore'
+
+PROJ.spec.opts << '--color'
+
+PROJ.ruby_opts = []
 
 depend_on 'nokogiri',    '~> 1.2.3'
 depend_on 'schacon-git', '~> 1.1.1'

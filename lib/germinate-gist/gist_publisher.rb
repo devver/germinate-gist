@@ -28,6 +28,7 @@ class GerminateGist::GistPublisher < Germinate::Publisher
   rescue RestClient::ExceptionWithResponse => error
     log.error "Error posting to gist: #{error.message}"
     log.debug "Response from Gist: #{error.response.message}\n#{error.response.body}"
+    raise UserError, error.message
   end
 
   def github_login
